@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ── PRIMARY SEO ── -->
+  <title>Cornell Osetale Isikhuemen | Photographer, Graphic Designer & Researcher in Nigeria</title>
+  <meta name="description" content="Cornell Osetale Isikhuemen (Korncept) is a professional photographer, graphic designer, environmental biology researcher, and software developer based in Nigeria. Worked with Reff Jey, Pleroma Studios, Lily Studios, and Radi8 Imagery." />
+  <meta name="keywords" content="Cornell Isikhuemen, Cornell Osetale Isikhuemen, Korncept, photographer Nigeria, graphic designer Nigeria, environmental biology researcher Nigeria, Learn2Earn fellow, Korncept photography, product design Nigeria" />
+  <meta name="author" content="Cornell Osetale Isikhuemen" />
+  <link rel="canonical" href="https://korncept.github.io/" />
+
+  <!-- ── OPEN GRAPH ── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://korncept.github.io/" />
+  <meta property="og:title" content="Cornell Osetale Isikhuemen | Photographer & Designer in Nigeria" />
+  <meta property="og:description" content="Professional photographer, graphic designer, researcher and developer based in Nigeria. View my portfolio and get in touch." />
+  <meta property="og:image" content="https://korncept.github.io/images/fire.jpg" />
+
+  <!-- ── TWITTER CARD ── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cornell Osetale Isikhuemen | Photographer & Designer" />
+  <meta name="twitter:description" content="Professional photographer, graphic designer, researcher and developer based in Nigeria." />
+  <meta name="twitter:image" content="https://korncept.github.io/images/fire.jpg" />
+
+  <!-- ── STRUCTURED DATA ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Cornell Osetale Isikhuemen",
+    "alternateName": "Korncept",
+    "url": "https://korncept.github.io/",
+    "email": "cornellisikhuemen@gmail.com",
+    "jobTitle": "Photographer, Graphic Designer & Researcher",
+    "worksFor": { "@type": "Organization", "name": "Learn2Earn Fellowship" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "University of Benin, Nigeria" },
+    "address": { "@type": "PostalAddress", "addressCountry": "NG" },
+    "sameAs": ["https://korncept.github.io"]
+  }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── LIGHT THEME (default) ── */
+    :root {
+      --ink:        #0f0f0f;
+      --paper:      #f7f4ef;
+      --accent:     #b85c38;
+      --muted:      #7a7060;
+      --rule:       #d9d3c7;
+      --card-bg:    #ffffff;
+      --nav-bg:     rgba(247,244,239,0.92);
+      --display:    'Cormorant Garamond', Georgia, serif;
+      --body:       'DM Sans', system-ui, sans-serif;
+    }
+
+    /* ── DARK THEME ── */
+    [data-theme="dark"] {
+      --ink:        #f0ece4;
+      --paper:      #0f0f0f;
+      --accent:     #d4764e;
+      --muted:      #9a9080;
+      --rule:       #2a2a2a;
+      --card-bg:    #1a1a1a;
+      --nav-bg:     rgba(15,15,15,0.92);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.7;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 6vw;
+      background: var(--nav-bg);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+      z-index: 100;
+      transition: background 0.3s;
+    }
+
+    .nav-left { display: flex; align-items: center; gap: 1rem; }
+
+    .nav-logo {
+      font-family: var(--display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+
+    /* ── DARK MODE TOGGLE ── */
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--rule);
+      border-radius: 50px;
+      padding: 0.4rem 0.8rem;
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--ink);
+      transition: border-color 0.2s, background 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .theme-toggle:hover { border-color: var(--accent); }
+
+    .theme-toggle .toggle-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── HAMBURGER (mobile) ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+      transition: all 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── MOBILE MENU ── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 65px; left: 0; right: 0;
+      background: var(--nav-bg);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+      padding: 1.5rem 6vw;
+      z-index: 99;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 6vw 4rem;
+      gap: 4rem;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-name {
+      font-family: var(--display);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-name em { font-style: italic; color: var(--accent); }
+
+    .hero-tagline {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 42ch;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      background: var(--ink);
+      color: var(--paper);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .hero-cta:hover { background: var(--accent); }
+
+    .hero-visual { display: flex; flex-direction: column; gap: 1rem; }
+
+    .hero-card {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: border-color 0.2s, transform 0.2s, background 0.3s;
+    }
+
+    .hero-card:hover { border-color: var(--accent); transform: translateX(6px); }
+
+    .hero-card-icon { font-size: 1.8rem; flex-shrink: 0; }
+
+    .hero-card-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-card-title { font-family: var(--display); font-size: 1.1rem; font-weight: 600; }
+
+    /* ── DIVIDER ── */
+    .divider { border: none; border-top: 1px solid var(--rule); margin: 0 6vw; }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 6vw; }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: var(--display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 2rem;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+
+    .about-body { font-size: 1rem; color: var(--muted); font-weight: 300; line-height: 1.9; }
+    .about-body p + p { margin-top: 1rem; }
+
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+    .stat { border-left: 2px solid var(--accent); padding-left: 1rem; }
+
+    .stat-number { font-family: var(--display); font-size: 2.4rem; font-weight: 300; line-height: 1; margin-bottom: 0.3rem; }
+
+    .stat-label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+    /* ── PORTFOLIO FILTERS ── */
+    .portfolio-filters {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .filter-btn {
+      padding: 0.5rem 1.2rem;
+      border: 1px solid var(--rule);
+      background: none;
+      color: var(--muted);
+      font-family: var(--body);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    /* ── PORTFOLIO GRID ── */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .portfolio-card {
+      border: 1px solid var(--rule);
+      overflow: hidden;
+      transition: border-color 0.2s, opacity 0.3s, transform 0.3s;
+      background: var(--card-bg);
+      cursor: pointer;
+    }
+
+    .portfolio-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+
+    .portfolio-card.hidden { display: none; }
+
+    .portfolio-thumb {
+      width: 100%;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+
+    .portfolio-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .portfolio-card:hover .portfolio-thumb img { transform: scale(1.05); }
+
+    .portfolio-info { padding: 1.2rem; }
+
+    .portfolio-category {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .portfolio-title { font-family: var(--display); font-size: 1.1rem; font-weight: 600; }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox-inner {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+
+    .lightbox-inner img {
+      max-width: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+      display: block;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -2.5rem;
+      right: 0;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+
+    .lightbox-close:hover { opacity: 1; }
+
+    .lightbox-caption {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem; }
+
+    .skill-row { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .skill-name { font-size: 0.82rem; font-weight: 500; letter-spacing: 0.05em; display: flex; justify-content: space-between; }
+
+    .skill-bar { height: 3px; background: var(--rule); position: relative; }
+
+    .skill-fill {
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      background: var(--accent);
+      width: 0%;
+      transition: width 1.2s ease;
+    }
+
+    /* ── CONTACT FORM ── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+
+    .contact-body { font-size: 1rem; color: var(--muted); font-weight: 300; margin-bottom: 2rem; }
+
+    .contact-email-link {
+      display: inline-block;
+      font-family: var(--display);
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 2px;
+      transition: color 0.2s;
+      margin-bottom: 2rem;
+    }
+
+    .contact-email-link:hover { color: var(--accent); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .form-group label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 0.95rem;
+      padding: 0.85rem 1rem;
+      outline: none;
+      transition: border-color 0.2s, background 0.3s;
+      resize: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--accent); }
+
+    .form-submit {
+      padding: 0.85rem 2rem;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--body);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      align-self: flex-start;
+    }
+
+    .form-submit:hover { background: var(--accent); }
+
+    .form-success {
+      display: none;
+      padding: 1rem;
+      background: #2d5a27;
+      color: white;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      margin-top: 0.5rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 2rem 6vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; padding-top: 7rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── HERO ANIMATION ── */
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-text, .hero-visual { animation: fadeUp 0.7s ease both; }
+      .hero-visual { animation-delay: 0.15s; }
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(24px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-left">
+      <a href="#" class="nav-logo">Cornell Isikhuemen</a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <span id="themeIcon">🌙</span>
+        <span class="toggle-label" id="themeLabel">Dark</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="closeMobileMenu()">About</a>
+    <a href="#portfolio" onclick="closeMobileMenu()">Portfolio</a>
+    <a href="#skills" onclick="closeMobileMenu()">Skills</a>
+    <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Based in Nigeria</p>
+      <h1 class="hero-name">Cornell<br/><em>Osetale</em><br/>Isikhuemen</h1>
+      <p class="hero-tagline">Photographer, Graphic Designer, Researcher & Software Developer — telling stories through lenses, pixels, and code.</p>
+      <a href="#portfolio" class="hero-cta">View My Work</a>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-icon">📸</div>
+        <div>
+          <div class="hero-card-label">Creative</div>
+          <div class="hero-card-title">Photography & Design</div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon">🔬</div>
+        <div>
+          <div class="hero-card-label">Academia</div>
+          <div class="hero-card-title">Published Researcher</div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon">💻</div>
+        <div>
+          <div class="hero-card-label">Technology</div>
+          <div class="hero-card-title">Software Developer</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-eyebrow reveal">Who I Am</p>
+    <h2 class="section-title reveal">A Creative Mind<br/>Rooted in Science</h2>
+    <div class="about-grid">
+      <div class="about-body reveal">
+        <p>I am Cornell Osetale Isikhuemen — a multidisciplinary creative and academic based in Nigeria. My work sits at the intersection of visual storytelling, scientific inquiry, and emerging technology.</p>
+        <p>As a photographer, I have collaborated with studios including Reff Jey, Pleroma Studios, Lily Studios, and Radi8 Imagery, bringing visual narratives to life across diverse contexts. My graphic design work complements this creative practice.</p>
+        <p>Academically, I am a published researcher in environmental biology and a proud fellow of the Learn2Earn Cohort 2 programme — actively developing skills in software development to add a new dimension to everything I do.</p>
+      </div>
+      <div class="about-stats reveal">
+        <div class="stat">
+          <div class="stat-number">5+</div>
+          <div class="stat-label">Studios Worked With</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">1</div>
+          <div class="stat-label">Published Research Paper</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">2</div>
+          <div class="stat-label">Creative Disciplines</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">∞</div>
+          <div class="stat-label">Stories Left to Tell</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <p class="section-eyebrow reveal">Selected Work</p>
+    <h2 class="section-title reveal">Portfolio</h2>
+
+    <!-- FILTER BUTTONS -->
+    <div class="portfolio-filters reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="photography">Photography</button>
+      <button class="filter-btn" data-filter="design">Graphic Design</button>
+      <button class="filter-btn" data-filter="research">Research</button>
+    </div>
+
+    <div class="portfolio-grid">
+      <div class="portfolio-card reveal" data-category="photography" data-img="images/fire.jpg" data-caption="Photography — Fire & Light by Korncept">
+        <div class="portfolio-thumb">
+          <img src="images/fire.jpg" alt="Fire and light photography by Cornell Isikhuemen (Korncept), Nigeria" />
+        </div>
+        <div class="portfolio-info">
+          <div class="portfolio-category">Photography</div>
+          <div class="portfolio-title">Fire & Light — Korncept</div>
+        </div>
+      </div>
+      <div class="portfolio-card reveal" data-category="design" data-img="images/shoe.jpg" data-caption="Graphic Design — Product Visual, Footwear">
+        <div class="portfolio-thumb">
+          <img src="images/shoe.jpg" alt="Footwear product graphic design by Cornell Osetale Isikhuemen, graphic designer Nigeria" />
+        </div>
+        <div class="portfolio-info">
+          <div class="portfolio-category">Graphic Design</div>
+          <div class="portfolio-title">Product Visual — Footwear</div>
+        </div>
+      </div>
+      <div class="portfolio-card reveal" data-category="design" data-img="images/biscuit.jpg" data-caption="Graphic Design — Product Mockup, Yale Cabin Biscuits">
+        <div class="portfolio-thumb">
+          <img src="images/biscuit.jpg" alt="Yale Cabin Sweetened Biscuits product mockup design by Cornell Isikhuemen, graphic designer Nigeria" />
+        </div>
+        <div class="portfolio-info">
+          <div class="portfolio-category">Graphic Design</div>
+          <div class="portfolio-title">Product Mockup — Yale Cabin</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-eyebrow reveal">What I Do</p>
+    <h2 class="section-title reveal">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-row reveal">
+        <span class="skill-name"><span>Photography</span><span>90%</span></span>
+        <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+      </div>
+      <div class="skill-row reveal">
+        <span class="skill-name"><span>Graphic Design</span><span>85%</span></span>
+        <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+      </div>
+      <div class="skill-row reveal">
+        <span class="skill-name"><span>Research & Writing</span><span>80%</span></span>
+        <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+      </div>
+      <div class="skill-row reveal">
+        <span class="skill-name"><span>Python (Learning)</span><span>30%</span></span>
+        <div class="skill-bar"><div class="skill-fill" data-width="30"></div></div>
+      </div>
+      <div class="skill-row reveal">
+        <span class="skill-name"><span>HTML & CSS</span><span>25%</span></span>
+        <div class="skill-bar"><div class="skill-fill" data-width="25"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-eyebrow reveal">Get In Touch</p>
+    <h2 class="section-title reveal">Let's Work Together</h2>
+    <div class="contact-grid">
+      <div class="reveal">
+        <p class="contact-body">Whether you need a photographer, a graphic designer, or a curious developer — I'd love to hear from you. Let's create something worth remembering.</p>
+        <a href="mailto:cornellisikhuemen@gmail.com" class="contact-email-link">cornellisikhuemen@gmail.com</a>
+      </div>
+      <div class="reveal">
+        <div class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="e.g. John Doe" />
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" placeholder="e.g. john@email.com" />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" rows="5" placeholder="Tell me about your project..."></textarea>
+          </div>
+          <button class="form-submit" onclick="submitForm()">Send Message</button>
+          <div class="form-success" id="formSuccess">
+            ✅ Thank you! Your message has been sent. I'll be in touch soon.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 Cornell Osetale Isikhuemen</span>
+    <span>korncept.github.io</span>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+      <img src="" alt="" id="lightboxImg" />
+      <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+  </div>
+
+  <!-- ── JAVASCRIPT ── -->
+  <script>
+
+    /* ── 1. DARK / LIGHT MODE ── */
+    const html       = document.documentElement;
+    const toggleBtn  = document.getElementById('themeToggle');
+    const themeIcon  = document.getElementById('themeIcon');
+    const themeLabel = document.getElementById('themeLabel');
+
+    // Remember preference
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    html.setAttribute('data-theme', savedTheme);
+    updateToggleUI(savedTheme);
+
+    toggleBtn.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next    = current === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateToggleUI(next);
+    });
+
+    function updateToggleUI(theme) {
+      if (theme === 'dark') {
+        themeIcon.textContent  = '☀️';
+        themeLabel.textContent = 'Light';
+      } else {
+        themeIcon.textContent  = '🌙';
+        themeLabel.textContent = 'Dark';
+      }
+    }
+
+    /* ── 2. HAMBURGER MENU ── */
+    const hamburger  = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+
+    function closeMobileMenu() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    }
+
+    /* ── 3. SCROLL REVEAL ── */
+    const revealEls = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    /* ── 4. SKILL BAR ANIMATION ── */
+    const skillFills = document.querySelectorAll('.skill-fill');
+
+    const skillObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = entry.target;
+          const width  = target.getAttribute('data-width');
+          target.style.width = width + '%';
+        }
+      });
+    }, { threshold: 0.3 });
+
+    skillFills.forEach(fill => skillObserver.observe(fill));
+
+    /* ── 5. PORTFOLIO FILTER ── */
+    const filterBtns   = document.querySelectorAll('.filter-btn');
+    const portfolioCards = document.querySelectorAll('.portfolio-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active button
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        portfolioCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    /* ── 6. LIGHTBOX ── */
+    portfolioCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const img     = card.getAttribute('data-img');
+        const caption = card.getAttribute('data-caption');
+        document.getElementById('lightboxImg').src     = img;
+        document.getElementById('lightboxImg').alt     = caption;
+        document.getElementById('lightboxCaption').textContent = caption;
+        document.getElementById('lightbox').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeLightbox(event) {
+      if (!event || event.target !== document.getElementById('lightbox').querySelector('.lightbox-inner')) {
+        document.getElementById('lightbox').classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Close lightbox with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    /* ── 7. CONTACT FORM ── */
+    function submitForm() {
+      const name    = document.getElementById('name').value.trim();
+      const email   = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !message) {
+        alert('Please fill in all fields before sending!');
+        return;
+      }
+
+      if (!email.includes('@')) {
+        alert('Please enter a valid email address!');
+        return;
+      }
+
+      // Open email client with prefilled message
+      const subject = encodeURIComponent('Portfolio Enquiry from ' + name);
+      const body    = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message);
+      window.location.href = 'mailto:cornellisikhuemen@gmail.com?subject=' + subject + '&body=' + body;
+
+      // Show success message
+      document.getElementById('formSuccess').style.display = 'block';
+      document.getElementById('name').value    = '';
+      document.getElementById('email').value   = '';
+      document.getElementById('message').value = '';
+    }
+
+  </script>
+</body>
+</html>
