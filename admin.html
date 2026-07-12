@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Panel | Korncept</title>
-  <!-- No index by search engines -->
   <meta name="robots" content="noindex, nofollow" />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 
@@ -18,18 +17,22 @@
       --muted:      #888078;
       --rule:       #e0dbd2;
       --nav-bg:     rgba(245,243,238,0.94);
-      --ok:         #1e6641; --ok-bg: #edf7f1;
+      --ok:         #1e6641; --ok-bg:  #edf7f1;
       --bad:        #7a1e1e; --bad-bg: #fdeaea;
+      --warn:       #7a4f10; --warn-bg:#fdf3e3;
+      --info:       #1a3f6f; --info-bg:#e8f0fb;
       --display: 'Syne', system-ui, sans-serif;
       --body:    'Inter', system-ui, sans-serif;
       --shadow:  0 2px 12px rgba(0,0,0,0.06);
     }
     [data-theme="dark"] {
-      --ink:        #f0ece3; --paper:   #0d0d0c; --surface: #1a1917;
+      --ink:        #f0ece3; --paper:      #0d0d0c; --surface:    #1a1917;
       --accent:     #d4764e; --accent-dim: rgba(212,118,78,0.1);
-      --muted:      #8a8278; --rule:    #2a2926; --nav-bg:  rgba(13,13,12,0.94);
-      --ok:  #3aaa6a; --ok-bg:  #0d2318;
-      --bad: #d45050; --bad-bg: #200c0c;
+      --muted:      #8a8278; --rule:       #2a2926; --nav-bg:     rgba(13,13,12,0.94);
+      --ok:  #3aaa6a; --ok-bg:   #0d2318;
+      --bad: #d45050; --bad-bg:  #200c0c;
+      --warn:#c9882a; --warn-bg: #1f1508;
+      --info:#5a8fd4; --info-bg: #091529;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -48,10 +51,11 @@
     /* ── LAYOUT ── */
     main { padding: 7rem 6vw 5rem; max-width: 700px; margin: 0 auto; }
 
-    /* ── LOGIN SCREEN ── */
+    /* ── SCREENS ── */
     .screen { display: none; }
     .screen.active { display: block; }
 
+    /* ── HEADER ── */
     .page-tag { display: inline-block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); padding: 0.25rem 0.7rem; margin-bottom: 1.4rem; }
     .page-title { font-family: var(--display); font-size: clamp(2rem, 7vw, 3.2rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1; margin-bottom: 0.7rem; }
     .page-title .accent { color: var(--accent); }
@@ -60,30 +64,42 @@
     /* ── CARD ── */
     .card { background: var(--surface); border: 1px solid var(--rule); padding: 1.8rem; margin-bottom: 1.5rem; box-shadow: var(--shadow); }
 
-    /* ── FORM ELEMENTS ── */
+    /* ── FORM ── */
     .field-label { font-family: var(--display); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; display: block; }
     .field-input { width: 100%; background: var(--paper); border: 1px solid var(--rule); color: var(--ink); font-family: var(--body); font-size: 0.95rem; padding: 0.75rem 1rem; outline: none; transition: border-color 0.2s; margin-bottom: 1rem; }
     .field-input:focus { border-color: var(--accent); }
     .field-input::placeholder { color: var(--muted); }
     textarea.field-input { resize: vertical; min-height: 80px; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
 
     /* ── BUTTONS ── */
     .btn-primary { width: 100%; padding: 0.9rem; background: var(--ink); color: var(--paper); font-family: var(--display); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; border: none; cursor: pointer; transition: background 0.2s; margin-top: 0.5rem; }
     .btn-primary:hover { background: var(--accent); }
-    .btn-secondary { padding: 0.6rem 1.2rem; background: none; border: 1px solid var(--rule); color: var(--muted); font-family: var(--display); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
+    .btn-secondary { padding: 0.55rem 1rem; background: none; border: 1px solid var(--rule); color: var(--muted); font-family: var(--display); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
     .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
-    .btn-danger { border-color: var(--bad); color: var(--bad); }
-    .btn-danger:hover { background: var(--bad); color: white; border-color: var(--bad); }
+    .btn-danger { border-color: var(--bad) !important; color: var(--bad) !important; }
+    .btn-danger:hover { background: var(--bad) !important; color: white !important; }
+    .btn-edit  { border-color: var(--info) !important; color: var(--info) !important; }
+    .btn-edit:hover { background: var(--info) !important; color: white !important; }
+    .btn-ok    { border-color: var(--ok) !important; color: var(--ok) !important; }
+    .btn-ok:hover { background: var(--ok) !important; color: white !important; }
+    .btn-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 
-    /* ── ALERT ── */
+    /* ── ALERTS ── */
     .alert { padding: 0.8rem 1rem; font-size: 0.85rem; border-left: 3px solid; margin-bottom: 1rem; display: none; }
     .alert.visible { display: block; }
-    .alert-ok  { background: var(--ok-bg);  border-color: var(--ok);  color: var(--ok); }
-    .alert-bad { background: var(--bad-bg); border-color: var(--bad); color: var(--bad); }
+    .alert-ok   { background: var(--ok-bg);   border-color: var(--ok);   color: var(--ok); }
+    .alert-bad  { background: var(--bad-bg);  border-color: var(--bad);  color: var(--bad); }
+    .alert-warn { background: var(--warn-bg); border-color: var(--warn); color: var(--warn); }
+    .alert-info { background: var(--info-bg); border-color: var(--info); color: var(--info); }
+
+    /* ── FORGOT PW LINK ── */
+    .forgot-link { font-size: 0.78rem; color: var(--accent); cursor: pointer; text-decoration: underline; margin-top: 0.5rem; display: inline-block; }
+    .forgot-link:hover { opacity: 0.8; }
 
     /* ── TABS ── */
-    .tabs { display: flex; border-bottom: 1px solid var(--rule); margin-bottom: 2rem; }
-    .tab-btn { background: none; border: none; border-bottom: 2px solid transparent; padding: 0.7rem 1.2rem; font-family: var(--display); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); cursor: pointer; margin-bottom: -1px; transition: all 0.2s; }
+    .tabs { display: flex; border-bottom: 1px solid var(--rule); margin-bottom: 2rem; overflow-x: auto; }
+    .tab-btn { background: none; border: none; border-bottom: 2px solid transparent; padding: 0.7rem 1rem; font-family: var(--display); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); cursor: pointer; margin-bottom: -1px; transition: all 0.2s; white-space: nowrap; flex-shrink: 0; }
     .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
@@ -98,37 +114,64 @@
     .img-preview-placeholder { text-align: center; color: var(--muted); font-size: 0.85rem; }
     .img-preview-placeholder span { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
 
-    /* ── CATEGORY PILLS ── */
+    /* ── PILLS ── */
     .pill-row { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1rem; }
     .pill { padding: 0.35rem 0.8rem; background: var(--paper); border: 1px solid var(--rule); color: var(--muted); font-family: var(--display); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.15s; }
     .pill:hover { border-color: var(--accent); color: var(--accent); }
     .pill.active { background: var(--accent); border-color: var(--accent); color: white; }
 
-    /* ── ITEMS LIST ── */
+    /* ── ITEM ROWS ── */
     .items-list { display: flex; flex-direction: column; gap: 0.8rem; }
-    .item-row { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1rem; background: var(--surface); border: 1px solid var(--rule); gap: 1rem; }
+    .item-row { background: var(--surface); border: 1px solid var(--rule); overflow: hidden; }
+    .item-row-header { display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1rem; }
+    .item-thumb { width: 52px; height: 52px; object-fit: cover; flex-shrink: 0; border: 1px solid var(--rule); }
     .item-info { flex: 1; min-width: 0; }
     .item-name { font-family: var(--display); font-size: 0.9rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .item-meta { font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem; }
-    .item-thumb { width: 52px; height: 52px; object-fit: cover; flex-shrink: 0; border: 1px solid var(--rule); }
     .item-actions { display: flex; gap: 0.4rem; flex-shrink: 0; }
 
-    /* ── LINK ITEMS ── */
-    .link-row { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1rem; background: var(--surface); border: 1px solid var(--rule); gap: 1rem; }
+    /* ── INLINE EDIT PANEL ── */
+    .edit-panel { display: none; padding: 1.2rem; border-top: 1px solid var(--rule); background: var(--paper); }
+    .edit-panel.open { display: block; }
+    .edit-img-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+    .edit-thumb { width: 80px; height: 80px; object-fit: cover; border: 1px solid var(--rule); flex-shrink: 0; }
+    .edit-img-change { font-size: 0.72rem; color: var(--accent); cursor: pointer; text-decoration: underline; }
+
+    /* ── LINK ROWS ── */
+    .link-row { background: var(--surface); border: 1px solid var(--rule); overflow: hidden; }
+    .link-row-header { display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1rem; }
     .link-info { flex: 1; min-width: 0; }
     .link-name { font-family: var(--display); font-size: 0.9rem; font-weight: 600; }
     .link-url  { font-size: 0.72rem; color: var(--accent); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-    /* ── EMPTY STATE ── */
+    /* ── CODE SNIPPET ── */
+    .snippet-area { font-family: monospace; font-size: 0.72rem; background: var(--paper); border: 1px solid var(--rule); padding: 1rem; width: 100%; resize: vertical; min-height: 120px; color: var(--ink); outline: none; }
+
+    /* ── PASSWORD STRENGTH ── */
+    .pw-strength { height: 3px; background: var(--rule); margin-bottom: 1rem; position: relative; }
+    .pw-strength-bar { height: 100%; width: 0%; transition: width 0.3s, background 0.3s; }
+
+    /* ── SECURITY Q ── */
+    .security-note { font-size: 0.78rem; color: var(--muted); margin-bottom: 1rem; font-style: italic; }
+
+    /* ── EMPTY ── */
     .empty-state { text-align: center; padding: 2.5rem; color: var(--muted); font-size: 0.85rem; font-style: italic; border: 1px dashed var(--rule); }
 
-    /* ── LOGOUT ── */
-    .logout-row { display: flex; justify-content: space-between; align-items: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); }
+    /* ── LOGOUT ROW ── */
+    .logout-row { display: flex; justify-content: space-between; align-items: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); flex-wrap: wrap; gap: 0.8rem; }
     .logout-info { font-size: 0.8rem; color: var(--muted); }
 
-    footer { border-top: 1px solid var(--rule); padding: 1.8rem 6vw; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--muted); }
+    footer { border-top: 1px solid var(--rule); padding: 1.8rem 6vw; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--muted); flex-wrap: wrap; gap: 0.5rem; }
+    .footer-back { color: var(--muted); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.04em; transition: color 0.2s; }
+    .footer-back:hover { color: var(--accent); }
     :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
     .hidden { display: none !important; }
+    .divider { border: none; border-top: 1px solid var(--rule); margin: 1.5rem 0; }
+
+    @media (max-width: 480px) {
+      .field-row { grid-template-columns: 1fr; }
+      .item-actions { flex-direction: column; }
+    }
   </style>
 </head>
 <body>
@@ -146,96 +189,143 @@
 
   <main>
 
-    <!-- ══ LOGIN SCREEN ══ -->
+    <!-- ══════════════════════
+         SCREEN 1 — LOGIN
+    ══════════════════════ -->
     <div class="screen active" id="screen-login">
       <div class="page-tag">Private Access</div>
-      <h1 class="page-title">Admin<br/><span class="accent">Panel</span></h1>
+      <h1 class="page-title">Admin<br/><span class="accent">Login</span></h1>
       <p class="page-sub">Enter your password to manage your portfolio content.</p>
 
       <div class="card">
         <div class="alert alert-bad" id="login-error">❌ Incorrect password. Please try again.</div>
-        <label class="field-label" for="passwordInput">Password</label>
-        <input class="field-input" type="password" id="passwordInput" placeholder="Enter admin password" aria-label="Admin password" />
+        <label class="field-label" for="loginPassword">Password</label>
+        <input class="field-input" type="password" id="loginPassword" placeholder="Enter admin password" />
         <button class="btn-primary" onclick="login()">Login →</button>
+        <br/>
+        <span class="forgot-link" onclick="showScreen('screen-forgot')">Forgot password?</span>
       </div>
-
-      <p style="font-size:0.78rem; color:var(--muted); margin-top:1rem;">
-        💡 <strong>Tip:</strong> Share this page URL with no one. It is only for you, Cornell!
-      </p>
     </div>
 
-    <!-- ══ ADMIN DASHBOARD ══ -->
+    <!-- ══════════════════════
+         SCREEN 2 — FORGOT PASSWORD
+    ══════════════════════ -->
+    <div class="screen" id="screen-forgot">
+      <div class="page-tag">Account Recovery</div>
+      <h1 class="page-title">Forgot<br/><span class="accent">Password</span></h1>
+      <p class="page-sub">Answer your security question to reset your password.</p>
+
+      <div class="card">
+        <div class="alert alert-bad"  id="forgot-error">❌ Wrong answer. Please try again.</div>
+        <div class="alert alert-info" id="forgot-hint"></div>
+
+        <p class="security-note">Security Question: <strong id="secQDisplay"></strong></p>
+
+        <label class="field-label" for="secAnswer">Your Answer</label>
+        <input class="field-input" type="text" id="secAnswer" placeholder="Type your answer..." />
+
+        <button class="btn-primary" onclick="verifySecAnswer()">Verify Answer →</button>
+        <br/>
+        <span class="forgot-link" onclick="showScreen('screen-login')" style="margin-top:0.8rem; display:inline-block;">← Back to Login</span>
+      </div>
+    </div>
+
+    <!-- ══════════════════════
+         SCREEN 3 — RESET PASSWORD
+    ══════════════════════ -->
+    <div class="screen" id="screen-reset">
+      <div class="page-tag">Reset Password</div>
+      <h1 class="page-title">New<br/><span class="accent">Password</span></h1>
+      <p class="page-sub">Choose a strong new password for your admin panel.</p>
+
+      <div class="card">
+        <div class="alert alert-bad" id="reset-error">❌ Passwords do not match or are too short.</div>
+
+        <label class="field-label" for="newPw1">New Password</label>
+        <input class="field-input" type="password" id="newPw1" placeholder="At least 8 characters" oninput="checkPwStrength(this.value)" />
+        <div class="pw-strength"><div class="pw-strength-bar" id="pwStrengthBar"></div></div>
+
+        <label class="field-label" for="newPw2">Confirm New Password</label>
+        <input class="field-input" type="password" id="newPw2" placeholder="Repeat your new password" />
+
+        <button class="btn-primary" onclick="resetPassword()">Set New Password →</button>
+      </div>
+    </div>
+
+    <!-- ══════════════════════
+         SCREEN 4 — DASHBOARD
+    ══════════════════════ -->
     <div class="screen" id="screen-admin">
       <div class="page-tag">Admin Dashboard</div>
       <h1 class="page-title">Manage<br/><span class="accent">Content</span></h1>
-      <p class="page-sub">Add new portfolio items, links, and manage your existing content below.</p>
+      <p class="page-sub">Add, edit, and manage your portfolio items and links below.</p>
 
       <!-- TABS -->
       <div class="tabs">
         <button class="tab-btn active" onclick="switchTab('portfolio')" id="tab-portfolio">🖼️ Portfolio</button>
-        <button class="tab-btn" onclick="switchTab('links')"     id="tab-links">🔗 Links</button>
-        <button class="tab-btn" onclick="switchTab('manage')"    id="tab-manage">⚙️ Manage</button>
+        <button class="tab-btn"        onclick="switchTab('links')"     id="tab-links">🔗 Links</button>
+        <button class="tab-btn"        onclick="switchTab('manage')"    id="tab-manage">⚙️ Manage</button>
+        <button class="tab-btn"        onclick="switchTab('settings')"  id="tab-settings">🔐 Settings</button>
       </div>
 
       <!-- ── PORTFOLIO TAB ── -->
       <div class="tab-panel active" id="panel-portfolio">
-        <div class="section-title">Add New Portfolio Item</div>
+        <div class="section-title" id="portfolio-form-title">Add New Portfolio Item</div>
         <div class="card">
+          <input type="hidden" id="editingItemId" value="" />
 
-          <!-- Image upload -->
-          <label class="field-label">Portfolio Image</label>
-          <div class="img-preview" id="imgPreview" onclick="document.getElementById('imgUpload').click()" aria-label="Click to upload image">
-            <div class="img-preview-placeholder">
-              <span>📸</span>
-              Click to upload an image
+          <label class="field-label">Image</label>
+          <div class="img-preview" id="imgPreview" onclick="document.getElementById('imgUpload').click()">
+            <div class="img-preview-placeholder"><span>📸</span>Click to upload an image</div>
+          </div>
+          <input type="file" id="imgUpload" accept="image/*" class="hidden" onchange="previewImage(event)" />
+
+          <div class="field-row">
+            <div>
+              <label class="field-label" for="itemTitle">Title</label>
+              <input class="field-input" type="text" id="itemTitle" placeholder="e.g. Brand Identity" />
+            </div>
+            <div>
+              <label class="field-label">Category</label>
+              <div class="pill-row" id="categoryPills">
+                <button class="pill active" data-cat="photography" onclick="selectCat(this)">Photo</button>
+                <button class="pill" data-cat="design"      onclick="selectCat(this)">Design</button>
+                <button class="pill" data-cat="research"    onclick="selectCat(this)">Research</button>
+                <button class="pill" data-cat="dev"         onclick="selectCat(this)">Dev</button>
+              </div>
             </div>
           </div>
-          <input type="file" id="imgUpload" accept="image/*" class="hidden" onchange="previewImage(event)" aria-label="Upload portfolio image" />
 
-          <label class="field-label" for="itemTitle">Title</label>
-          <input class="field-input" type="text" id="itemTitle" placeholder="e.g. Brand Identity — Korncept" />
-
-          <label class="field-label">Category</label>
-          <div class="pill-row" id="categoryPills" role="group" aria-label="Select category">
-            <button class="pill active" data-cat="photography"  onclick="selectCat(this)">Photography</button>
-            <button class="pill"        data-cat="design"       onclick="selectCat(this)">Graphic Design</button>
-            <button class="pill"        data-cat="research"     onclick="selectCat(this)">Research</button>
-            <button class="pill"        data-cat="dev"          onclick="selectCat(this)">Development</button>
-          </div>
-
-          <label class="field-label" for="itemCaption">Caption / Description</label>
+          <label class="field-label" for="itemCaption">Caption</label>
           <textarea class="field-input" id="itemCaption" placeholder="Short description shown in the lightbox..."></textarea>
 
-          <div class="alert alert-ok"  id="portfolio-success">✅ Portfolio item added successfully!</div>
+          <div class="alert alert-ok"  id="portfolio-success">✅ Item saved successfully!</div>
           <div class="alert alert-bad" id="portfolio-error">❌ Please fill in the title and upload an image.</div>
 
-          <button class="btn-primary" onclick="addPortfolioItem()">Add to Portfolio →</button>
+          <div class="btn-row">
+            <button class="btn-primary" style="flex:1" onclick="savePortfolioItem()">Save Item →</button>
+            <button class="btn-secondary hidden" id="cancelEditItemBtn" onclick="cancelEditItem()">Cancel</button>
+          </div>
         </div>
 
-        <!-- HOW IT WORKS NOTE -->
-        <div class="card" style="background:var(--accent-dim); border-color:var(--accent);">
-          <div class="section-title" style="color:var(--accent);">📌 How Adding Works</div>
-          <p style="font-size:0.85rem; color:var(--muted); line-height:1.7;">
-            When you add a portfolio item here, it saves to your browser's local storage and appears on your homepage immediately when you visit it from <strong>this same device and browser.</strong><br/><br/>
-            To make it permanent for all visitors, download the generated code snippet below and add it to your <code>index.html</code> on GitHub. I'll generate it for you automatically! 😄
-          </p>
-        </div>
-
-        <!-- GENERATED SNIPPET -->
+        <!-- SNIPPET -->
         <div id="snippetSection" class="hidden">
           <div class="section-title">Generated Code Snippet</div>
           <div class="card">
-            <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;">Copy this and add it inside the <code>.portfolio-grid</code> div in your <code>index.html</code>:</p>
-            <textarea class="field-input" id="snippetOutput" rows="8" readonly style="font-family:monospace;font-size:0.75rem;"></textarea>
-            <button class="btn-secondary" onclick="copySnippet()" style="margin-top:0.8rem;">📋 Copy Snippet</button>
+            <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;">Copy this into your <code>index.html</code> portfolio grid to make it permanent for all visitors:</p>
+            <textarea class="snippet-area" id="snippetOutput" readonly></textarea>
+            <br/>
+            <button class="btn-secondary btn-ok" style="margin-top:0.8rem;" onclick="copySnippet()">📋 Copy Snippet</button>
           </div>
         </div>
       </div>
 
       <!-- ── LINKS TAB ── -->
       <div class="tab-panel" id="panel-links">
-        <div class="section-title">Add New Link</div>
+        <div class="section-title" id="link-form-title">Add New Link</div>
         <div class="card">
+          <input type="hidden" id="editingLinkId" value="" />
+
           <label class="field-label" for="linkName">Link Name</label>
           <input class="field-input" type="text" id="linkName" placeholder="e.g. My Behance Profile" />
 
@@ -246,8 +336,8 @@
           <input class="field-input" type="text" id="linkDesc" placeholder="e.g. View my graphic design portfolio" />
 
           <label class="field-label">Link Type</label>
-          <div class="pill-row" id="linkTypePills" role="group" aria-label="Select link type">
-            <button class="pill active" data-type="social"    onclick="selectLinkType(this)">Social Media</button>
+          <div class="pill-row" id="linkTypePills">
+            <button class="pill active" data-type="social"    onclick="selectLinkType(this)">Social</button>
             <button class="pill"        data-type="portfolio" onclick="selectLinkType(this)">Portfolio</button>
             <button class="pill"        data-type="research"  onclick="selectLinkType(this)">Research</button>
             <button class="pill"        data-type="other"     onclick="selectLinkType(this)">Other</button>
@@ -256,26 +346,77 @@
           <div class="alert alert-ok"  id="link-success">✅ Link saved successfully!</div>
           <div class="alert alert-bad" id="link-error">❌ Please enter a name and valid URL.</div>
 
-          <button class="btn-primary" onclick="addLink()">Save Link →</button>
+          <div class="btn-row">
+            <button class="btn-primary" style="flex:1" onclick="saveLink()">Save Link →</button>
+            <button class="btn-secondary hidden" id="cancelEditLinkBtn" onclick="cancelEditLink()">Cancel</button>
+          </div>
         </div>
 
         <!-- SAVED LINKS -->
         <div class="section-title" style="margin-top:2rem;">Saved Links</div>
-        <div id="linksList">
-          <div class="empty-state">No links saved yet — add your first one above!</div>
+        <div id="linksList" class="items-list">
+          <div class="empty-state">No links saved yet!</div>
         </div>
       </div>
 
       <!-- ── MANAGE TAB ── -->
       <div class="tab-panel" id="panel-manage">
         <div class="section-title">Portfolio Items</div>
-        <div id="manageList">
-          <div class="empty-state">No items added yet — go to the Portfolio tab to add your first item!</div>
+        <div id="manageList" class="items-list">
+          <div class="empty-state">No items added yet!</div>
+        </div>
+      </div>
+
+      <!-- ── SETTINGS TAB ── -->
+      <div class="tab-panel" id="panel-settings">
+
+        <!-- CHANGE PASSWORD -->
+        <div class="section-title">Change Password</div>
+        <div class="card">
+          <label class="field-label" for="currentPw">Current Password</label>
+          <input class="field-input" type="password" id="currentPw" placeholder="Enter current password" />
+
+          <label class="field-label" for="newPwA">New Password</label>
+          <input class="field-input" type="password" id="newPwA" placeholder="At least 8 characters" oninput="checkPwStrength(this.value)" />
+          <div class="pw-strength"><div class="pw-strength-bar" id="pwStrengthBar"></div></div>
+
+          <label class="field-label" for="newPwB">Confirm New Password</label>
+          <input class="field-input" type="password" id="newPwB" placeholder="Repeat new password" />
+
+          <div class="alert alert-ok"  id="changepw-success">✅ Password changed successfully!</div>
+          <div class="alert alert-bad" id="changepw-error">❌ Check your current password and try again.</div>
+
+          <button class="btn-primary" onclick="changePassword()">Update Password →</button>
         </div>
 
-        <div style="margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--rule);">
-          <div class="section-title" style="color:var(--bad);">Danger Zone</div>
-          <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;">Clear all admin-added content from this browser. This cannot be undone!</p>
+        <!-- SECURITY QUESTION -->
+        <div class="section-title">Security Question</div>
+        <div class="card">
+          <p class="security-note">This is used to recover your password if you forget it. Choose something only you would know.</p>
+
+          <label class="field-label" for="secQSelect">Security Question</label>
+          <select class="field-input" id="secQSelect">
+            <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+            <option value="What was the name of your first pet?">What was the name of your first pet?</option>
+            <option value="What city were you born in?">What city were you born in?</option>
+            <option value="What is your favourite childhood food?">What is your favourite childhood food?</option>
+            <option value="What was the name of your primary school?">What was the name of your primary school?</option>
+            <option value="What is your favourite movie?">What is your favourite movie?</option>
+          </select>
+
+          <label class="field-label" for="secAInput">Your Answer</label>
+          <input class="field-input" type="text" id="secAInput" placeholder="Type your answer..." />
+
+          <div class="alert alert-ok"  id="secq-success">✅ Security question saved!</div>
+          <div class="alert alert-bad" id="secq-error">❌ Please select a question and type your answer.</div>
+
+          <button class="btn-primary" onclick="saveSecurityQuestion()">Save Security Question →</button>
+        </div>
+
+        <!-- DANGER ZONE -->
+        <div class="section-title" style="color:var(--bad);">Danger Zone</div>
+        <div class="card" style="border-color:var(--bad);">
+          <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1rem;">Clear all admin-added content from this browser. This cannot be undone!</p>
           <button class="btn-secondary btn-danger" onclick="clearAll()">🗑️ Clear All Admin Content</button>
         </div>
       </div>
@@ -290,13 +431,15 @@
   </main>
 
   <footer>
-    <a href="index.html" style="color:var(--muted);text-decoration:none;font-size:0.78rem;transition:color 0.2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'">← Back to Portfolio</a>
+    <a href="index.html" class="footer-back">← Back to Portfolio</a>
     <span>© 2026 Cornell Osetale Isikhuemen</span>
   </footer>
 
   <script>
 
-    /* ══ THEME ══ */
+    /* ══════════════════════════════
+       THEME
+    ══════════════════════════════ */
     const html = document.documentElement;
     const savedTheme = localStorage.getItem('theme') || 'light';
     html.setAttribute('data-theme', savedTheme);
@@ -312,70 +455,232 @@
       document.getElementById('themeLabel').textContent = t === 'dark' ? 'Light' : 'Dark';
     }
 
-    /* ══ PASSWORD ══ */
-    // Change this to your own password!
-    const ADMIN_PASSWORD = 'Korncept2026';
+    /* ══════════════════════════════
+       STORAGE KEYS
+    ══════════════════════════════ */
+    const KEY_PW    = 'admin_password';
+    const KEY_AUTH  = 'admin_auth';
+    const KEY_ITEMS = 'admin_portfolio_items';
+    const KEY_LINKS = 'admin_links';
+    const KEY_SECQ  = 'admin_sec_question';
+    const KEY_SECA  = 'admin_sec_answer';
 
-    function login() {
-      const pw = document.getElementById('passwordInput').value;
-      if (pw === ADMIN_PASSWORD) {
-        localStorage.setItem('admin_auth', 'true');
-        showScreen('screen-admin');
-        renderAll();
-      } else {
-        document.getElementById('login-error').classList.add('visible');
-        document.getElementById('passwordInput').value = '';
-      }
-    }
+    /* ── Default password (hashed simply via btoa) ── */
+    function getStoredPw() { return localStorage.getItem(KEY_PW) || btoa('Korncept2026'); }
+    function checkPw(input) { return btoa(input) === getStoredPw(); }
+    function storePw(pw)    { localStorage.setItem(KEY_PW, btoa(pw)); }
 
-    // Allow Enter key to login
-    document.getElementById('passwordInput').addEventListener('keydown', e => {
-      if (e.key === 'Enter') login();
-    });
-
-    function logout() {
-      if (!confirm('Are you sure you want to logout?')) return;
-      localStorage.removeItem('admin_auth');
-      showScreen('screen-login');
-    }
-
-    // Auto-login if already authenticated
-    if (localStorage.getItem('admin_auth') === 'true') {
-      showScreen('screen-admin');
-      renderAll();
-    }
-
-    /* ══ SCREEN SWITCH ══ */
+    /* ══════════════════════════════
+       SCREEN MANAGEMENT
+    ══════════════════════════════ */
     function showScreen(id) {
       document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
       document.getElementById(id).classList.add('active');
     }
 
-    /* ══ TABS ══ */
+    /* ══════════════════════════════
+       LOGIN
+    ══════════════════════════════ */
+    function login() {
+      const pw = document.getElementById('loginPassword').value;
+      if (checkPw(pw)) {
+        localStorage.setItem(KEY_AUTH, 'true');
+        document.getElementById('loginPassword').value = '';
+        document.getElementById('login-error').classList.remove('visible');
+        showScreen('screen-admin');
+        renderAll();
+      } else {
+        document.getElementById('login-error').classList.add('visible');
+        document.getElementById('loginPassword').value = '';
+      }
+    }
+
+    document.getElementById('loginPassword').addEventListener('keydown', e => {
+      if (e.key === 'Enter') login();
+    });
+
+    function logout() {
+      if (!confirm('Are you sure you want to logout?')) return;
+      localStorage.removeItem(KEY_AUTH);
+      showScreen('screen-login');
+    }
+
+    // Auto-login if session active
+    if (localStorage.getItem(KEY_AUTH) === 'true') {
+      showScreen('screen-admin');
+      renderAll();
+    }
+
+    /* ══════════════════════════════
+       FORGOT PASSWORD
+    ══════════════════════════════ */
+    // Show forgot screen and display security question
+    document.querySelector('.forgot-link').addEventListener('click', () => {
+      const q = localStorage.getItem(KEY_SECQ);
+      if (!q) {
+        alert('No security question has been set up yet. Please contact yourself! 😄\n\nDefault password: Korncept2026');
+        return;
+      }
+      document.getElementById('secQDisplay').textContent = q;
+      document.getElementById('forgot-error').classList.remove('visible');
+      document.getElementById('forgot-hint').classList.remove('visible');
+      document.getElementById('secAnswer').value = '';
+      showScreen('screen-forgot');
+    });
+
+    function verifySecAnswer() {
+      const answer   = document.getElementById('secAnswer').value.trim().toLowerCase();
+      const stored   = (localStorage.getItem(KEY_SECA) || '').toLowerCase();
+      if (!answer) return;
+
+      if (answer === stored) {
+        document.getElementById('forgot-error').classList.remove('visible');
+        showScreen('screen-reset');
+        document.getElementById('newPw1').value = '';
+        document.getElementById('newPw2').value = '';
+        document.getElementById('reset-error').classList.remove('visible');
+        resetPwStrength();
+      } else {
+        document.getElementById('forgot-error').classList.add('visible');
+        document.getElementById('secAnswer').value = '';
+      }
+    }
+
+    document.getElementById('secAnswer').addEventListener('keydown', e => {
+      if (e.key === 'Enter') verifySecAnswer();
+    });
+
+    /* ══════════════════════════════
+       RESET PASSWORD (after forgot)
+    ══════════════════════════════ */
+    function resetPassword() {
+      const pw1 = document.getElementById('newPw1').value;
+      const pw2 = document.getElementById('newPw2').value;
+      if (pw1.length < 8 || pw1 !== pw2) {
+        document.getElementById('reset-error').classList.add('visible');
+        return;
+      }
+      storePw(pw1);
+      alert('✅ Password reset successfully! Please login with your new password.');
+      showScreen('screen-login');
+    }
+
+    /* ══════════════════════════════
+       CHANGE PASSWORD (from settings)
+    ══════════════════════════════ */
+    function changePassword() {
+      const current = document.getElementById('currentPw').value;
+      const newA    = document.getElementById('newPwA').value;
+      const newB    = document.getElementById('newPwB').value;
+
+      hideAlerts('changepw');
+
+      if (!checkPw(current)) {
+        document.getElementById('changepw-error').textContent = '❌ Current password is incorrect.';
+        document.getElementById('changepw-error').classList.add('visible');
+        return;
+      }
+      if (newA.length < 8) {
+        document.getElementById('changepw-error').textContent = '❌ New password must be at least 8 characters.';
+        document.getElementById('changepw-error').classList.add('visible');
+        return;
+      }
+      if (newA !== newB) {
+        document.getElementById('changepw-error').textContent = '❌ New passwords do not match.';
+        document.getElementById('changepw-error').classList.add('visible');
+        return;
+      }
+
+      storePw(newA);
+      document.getElementById('currentPw').value = '';
+      document.getElementById('newPwA').value    = '';
+      document.getElementById('newPwB').value    = '';
+      resetPwStrength();
+      document.getElementById('changepw-success').classList.add('visible');
+      setTimeout(() => hideAlerts('changepw'), 4000);
+    }
+
+    /* ══════════════════════════════
+       PASSWORD STRENGTH METER
+    ══════════════════════════════ */
+    function checkPwStrength(pw) {
+      const bar = document.getElementById('pwStrengthBar');
+      if (!pw) { resetPwStrength(); return; }
+      let score = 0;
+      if (pw.length >= 8)  score++;
+      if (pw.length >= 12) score++;
+      if (/[A-Z]/.test(pw)) score++;
+      if (/[0-9]/.test(pw)) score++;
+      if (/[^A-Za-z0-9]/.test(pw)) score++;
+      const levels = ['#d45050','#c9882a','#c9882a','#3aaa6a','#1e6641'];
+      const widths = ['20%','40%','60%','80%','100%'];
+      bar.style.width      = widths[score - 1] || '0%';
+      bar.style.background = levels[score - 1] || 'var(--rule)';
+    }
+
+    function resetPwStrength() {
+      const bar = document.getElementById('pwStrengthBar');
+      if (bar) { bar.style.width = '0%'; }
+    }
+
+    /* ══════════════════════════════
+       SECURITY QUESTION
+    ══════════════════════════════ */
+    function saveSecurityQuestion() {
+      const q = document.getElementById('secQSelect').value;
+      const a = document.getElementById('secAInput').value.trim();
+      hideAlerts('secq');
+      if (!q || !a) { document.getElementById('secq-error').classList.add('visible'); return; }
+      localStorage.setItem(KEY_SECQ, q);
+      localStorage.setItem(KEY_SECA, a.toLowerCase());
+      document.getElementById('secAInput').value = '';
+      document.getElementById('secq-success').classList.add('visible');
+      setTimeout(() => hideAlerts('secq'), 4000);
+    }
+
+    // Load saved security question on settings open
+    function loadSecuritySettings() {
+      const saved = localStorage.getItem(KEY_SECQ);
+      if (saved) {
+        const sel = document.getElementById('secQSelect');
+        for (let opt of sel.options) { if (opt.value === saved) { opt.selected = true; break; } }
+      }
+    }
+
+    /* ══════════════════════════════
+       TABS
+    ══════════════════════════════ */
     function switchTab(tab) {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
       document.getElementById('tab-' + tab).classList.add('active');
       document.getElementById('panel-' + tab).classList.add('active');
-      if (tab === 'manage') renderManage();
+      if (tab === 'manage')   renderManage();
+      if (tab === 'links')    renderLinks();
+      if (tab === 'settings') loadSecuritySettings();
     }
 
-    /* ══ CATEGORY PILLS ══ */
-    let selectedCat = 'photography';
+    /* ══════════════════════════════
+       PILLS
+    ══════════════════════════════ */
+    let selectedCat      = 'photography';
+    let selectedLinkType = 'social';
+
     function selectCat(el) {
       document.querySelectorAll('#categoryPills .pill').forEach(p => p.classList.remove('active'));
       el.classList.add('active');
       selectedCat = el.getAttribute('data-cat');
     }
 
-    let selectedLinkType = 'social';
     function selectLinkType(el) {
       document.querySelectorAll('#linkTypePills .pill').forEach(p => p.classList.remove('active'));
       el.classList.add('active');
       selectedLinkType = el.getAttribute('data-type');
     }
 
-    /* ══ IMAGE PREVIEW ══ */
+    /* ══════════════════════════════
+       IMAGE PREVIEW
+    ══════════════════════════════ */
     let uploadedImageData = null;
     let uploadedImageName = '';
 
@@ -386,81 +691,111 @@
       const reader = new FileReader();
       reader.onload = (e) => {
         uploadedImageData = e.target.result;
-        const preview = document.getElementById('imgPreview');
-        preview.innerHTML = '<img src="' + uploadedImageData + '" alt="Preview" />';
+        document.getElementById('imgPreview').innerHTML =
+          '<img src="' + uploadedImageData + '" alt="Preview" />';
       };
       reader.readAsDataURL(file);
     }
 
-    /* ══ ADD PORTFOLIO ITEM ══ */
-    function addPortfolioItem() {
-      const title   = document.getElementById('itemTitle').value.trim();
-      const caption = document.getElementById('itemCaption').value.trim();
-
+    /* ══════════════════════════════
+       PORTFOLIO — ADD / EDIT
+    ══════════════════════════════ */
+    function savePortfolioItem() {
+      const editingId = document.getElementById('editingItemId').value;
+      const title     = document.getElementById('itemTitle').value.trim();
+      const caption   = document.getElementById('itemCaption').value.trim();
       hideAlerts('portfolio');
 
-      if (!title || !uploadedImageData) {
-        document.getElementById('portfolio-error').classList.add('visible');
-        return;
-      }
-
       const items = getItems();
-      const id    = 'item_' + Date.now();
 
-      items.push({
-        id, title, caption,
-        category: selectedCat,
-        image: uploadedImageData,
-        imageName: uploadedImageName,
-        createdAt: new Date().toLocaleDateString()
+      if (editingId) {
+        // EDIT MODE
+        const idx = items.findIndex(i => i.id === editingId);
+        if (idx === -1) return;
+        if (!title) { document.getElementById('portfolio-error').classList.add('visible'); return; }
+        items[idx].title    = title;
+        items[idx].caption  = caption;
+        items[idx].category = selectedCat;
+        if (uploadedImageData) {
+          items[idx].image     = uploadedImageData;
+          items[idx].imageName = uploadedImageName;
+        }
+        saveItems(items);
+        generateSnippet(items[idx]);
+        cancelEditItem();
+        document.getElementById('portfolio-success').textContent = '✅ Item updated successfully!';
+        document.getElementById('portfolio-success').classList.add('visible');
+        setTimeout(() => hideAlerts('portfolio'), 4000);
+        switchTab('manage');
+
+      } else {
+        // ADD MODE
+        if (!title || !uploadedImageData) {
+          document.getElementById('portfolio-error').classList.add('visible');
+          return;
+        }
+        const newItem = {
+          id: 'item_' + Date.now(), title, caption,
+          category: selectedCat, image: uploadedImageData,
+          imageName: uploadedImageName,
+          createdAt: new Date().toLocaleDateString()
+        };
+        items.push(newItem);
+        saveItems(items);
+        generateSnippet(newItem);
+        resetPortfolioForm();
+        document.getElementById('portfolio-success').textContent = '✅ Item added successfully!';
+        document.getElementById('portfolio-success').classList.add('visible');
+        setTimeout(() => hideAlerts('portfolio'), 4000);
+      }
+    }
+
+    function editItem(id) {
+      const item = getItems().find(i => i.id === id);
+      if (!item) return;
+      switchTab('portfolio');
+      document.getElementById('portfolio-form-title').textContent = 'Edit Portfolio Item';
+      document.getElementById('editingItemId').value  = id;
+      document.getElementById('itemTitle').value      = item.title;
+      document.getElementById('itemCaption').value    = item.caption || '';
+      document.getElementById('imgPreview').innerHTML = '<img src="' + item.image + '" alt="Current image" />';
+      uploadedImageData = item.image;
+      uploadedImageName = item.imageName;
+      document.querySelectorAll('#categoryPills .pill').forEach(p => {
+        p.classList.toggle('active', p.getAttribute('data-cat') === item.category);
       });
+      selectedCat = item.category;
+      document.getElementById('cancelEditItemBtn').classList.remove('hidden');
+      document.getElementById('snippetSection').classList.add('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
-      saveItems(items);
-      generateSnippet(items[items.length - 1]);
+    function cancelEditItem() {
+      document.getElementById('portfolio-form-title').textContent = 'Add New Portfolio Item';
+      document.getElementById('editingItemId').value = '';
+      document.getElementById('cancelEditItemBtn').classList.add('hidden');
+      resetPortfolioForm();
+    }
 
-      // Reset form
+    function resetPortfolioForm() {
       document.getElementById('itemTitle').value   = '';
       document.getElementById('itemCaption').value = '';
-      document.getElementById('imgPreview').innerHTML = '<div class="img-preview-placeholder"><span>📸</span>Click to upload an image</div>';
-      document.getElementById('imgUpload').value   = '';
-      uploadedImageData = null;
-      uploadedImageName = '';
-
-      document.getElementById('portfolio-success').classList.add('visible');
-      setTimeout(() => hideAlerts('portfolio'), 4000);
+      document.getElementById('imgPreview').innerHTML =
+        '<div class="img-preview-placeholder"><span>📸</span>Click to upload an image</div>';
+      document.getElementById('imgUpload').value = '';
+      uploadedImageData = null; uploadedImageName = '';
+      document.querySelectorAll('#categoryPills .pill').forEach((p, i) => p.classList.toggle('active', i === 0));
+      selectedCat = 'photography';
     }
 
-    /* ══ GENERATE CODE SNIPPET ══ */
-    function generateSnippet(item) {
-      const catLabels = { photography:'Photography', design:'Graphic Design', research:'Research', dev:'Development' };
-      const snippet = `<div class="portfolio-card reveal" data-category="${item.category}" data-img="images/${item.imageName}" data-caption="${item.caption || item.title}" aria-label="View ${item.title}">
-  <div class="portfolio-thumb">
-    <img src="images/${item.imageName}" alt="${item.title}" />
-  </div>
-  <div class="portfolio-info">
-    <div class="portfolio-category">${catLabels[item.category] || item.category}</div>
-    <div class="portfolio-title">${item.title}</div>
-  </div>
-</div>`;
-
-      document.getElementById('snippetOutput').value = snippet;
-      document.getElementById('snippetSection').classList.remove('hidden');
-      document.getElementById('snippetSection').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function copySnippet() {
-      const ta = document.getElementById('snippetOutput');
-      ta.select();
-      document.execCommand('copy');
-      alert('✅ Snippet copied! Paste it into your index.html portfolio grid.');
-    }
-
-    /* ══ ADD LINK ══ */
-    function addLink() {
+    /* ══════════════════════════════
+       LINKS — ADD / EDIT
+    ══════════════════════════════ */
+    function saveLink() {
+      const editingId = document.getElementById('editingLinkId').value;
       const name = document.getElementById('linkName').value.trim();
       const url  = document.getElementById('linkUrl').value.trim();
       const desc = document.getElementById('linkDesc').value.trim();
-
       hideAlerts('link');
 
       if (!name || !url || !url.startsWith('http')) {
@@ -469,19 +804,61 @@
       }
 
       const links = getLinks();
-      links.push({ id: 'link_' + Date.now(), name, url, desc, type: selectedLinkType, createdAt: new Date().toLocaleDateString() });
-      saveLinks(links);
-      renderLinks();
 
-      document.getElementById('linkName').value = '';
-      document.getElementById('linkUrl').value  = '';
-      document.getElementById('linkDesc').value = '';
+      if (editingId) {
+        // EDIT MODE
+        const idx = links.findIndex(l => l.id === editingId);
+        if (idx !== -1) {
+          links[idx] = { ...links[idx], name, url, desc, type: selectedLinkType };
+          saveLinks(links);
+        }
+        cancelEditLink();
+        document.getElementById('link-success').textContent = '✅ Link updated successfully!';
+      } else {
+        // ADD MODE
+        links.push({ id: 'link_' + Date.now(), name, url, desc, type: selectedLinkType, createdAt: new Date().toLocaleDateString() });
+        saveLinks(links);
+        document.getElementById('link-success').textContent = '✅ Link added successfully!';
+        document.getElementById('linkName').value = '';
+        document.getElementById('linkUrl').value  = '';
+        document.getElementById('linkDesc').value = '';
+      }
 
       document.getElementById('link-success').classList.add('visible');
       setTimeout(() => hideAlerts('link'), 3000);
+      renderLinks();
     }
 
-    /* ══ RENDER LINKS ══ */
+    function editLink(id) {
+      const link = getLinks().find(l => l.id === id);
+      if (!link) return;
+      document.getElementById('link-form-title').textContent  = 'Edit Link';
+      document.getElementById('editingLinkId').value = id;
+      document.getElementById('linkName').value = link.name;
+      document.getElementById('linkUrl').value  = link.url;
+      document.getElementById('linkDesc').value = link.desc || '';
+      document.querySelectorAll('#linkTypePills .pill').forEach(p => {
+        p.classList.toggle('active', p.getAttribute('data-type') === link.type);
+      });
+      selectedLinkType = link.type;
+      document.getElementById('cancelEditLinkBtn').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function cancelEditLink() {
+      document.getElementById('link-form-title').textContent = 'Add New Link';
+      document.getElementById('editingLinkId').value = '';
+      document.getElementById('linkName').value = '';
+      document.getElementById('linkUrl').value  = '';
+      document.getElementById('linkDesc').value = '';
+      document.getElementById('cancelEditLinkBtn').classList.add('hidden');
+      document.querySelectorAll('#linkTypePills .pill').forEach((p, i) => p.classList.toggle('active', i === 0));
+      selectedLinkType = 'social';
+    }
+
+    /* ══════════════════════════════
+       RENDER LINKS
+    ══════════════════════════════ */
     function renderLinks() {
       const links = getLinks();
       const el    = document.getElementById('linksList');
@@ -491,14 +868,17 @@
       }
       el.innerHTML = links.map(l => `
         <div class="link-row">
-          <div class="link-info">
-            <div class="link-name">${l.name}</div>
-            <div class="link-url">${l.url}</div>
-            ${l.desc ? '<div style="font-size:0.72rem;color:var(--muted);margin-top:0.2rem;">' + l.desc + '</div>' : ''}
-          </div>
-          <div style="display:flex;gap:0.4rem;flex-shrink:0;">
-            <a href="${l.url}" target="_blank" rel="noopener" class="btn-secondary" style="text-decoration:none;">Visit</a>
-            <button class="btn-secondary btn-danger" onclick="deleteLink('${l.id}')">✕</button>
+          <div class="link-row-header">
+            <div class="link-info">
+              <div class="link-name">${l.name}</div>
+              <div class="link-url">${l.url}</div>
+              ${l.desc ? '<div style="font-size:0.72rem;color:var(--muted);margin-top:0.2rem;">' + l.desc + '</div>' : ''}
+            </div>
+            <div class="item-actions">
+              <a href="${l.url}" target="_blank" rel="noopener" class="btn-secondary" style="text-decoration:none;">↗</a>
+              <button class="btn-secondary btn-edit" onclick="editLink('${l.id}')">Edit</button>
+              <button class="btn-secondary btn-danger" onclick="deleteLink('${l.id}')">✕</button>
+            </div>
           </div>
         </div>
       `).join('');
@@ -510,7 +890,9 @@
       renderLinks();
     }
 
-    /* ══ RENDER MANAGE ══ */
+    /* ══════════════════════════════
+       RENDER MANAGE
+    ══════════════════════════════ */
     function renderManage() {
       const items = getItems();
       const el    = document.getElementById('manageList');
@@ -520,14 +902,17 @@
       }
       el.innerHTML = items.map(item => `
         <div class="item-row">
-          <img class="item-thumb" src="${item.image}" alt="${item.title}" />
-          <div class="item-info">
-            <div class="item-name">${item.title}</div>
-            <div class="item-meta">${item.category} · Added ${item.createdAt}</div>
-          </div>
-          <div class="item-actions">
-            <button class="btn-secondary" onclick="reSnippet('${item.id}')">Code</button>
-            <button class="btn-secondary btn-danger" onclick="deleteItem('${item.id}')">✕</button>
+          <div class="item-row-header">
+            <img class="item-thumb" src="${item.image}" alt="${item.title}" />
+            <div class="item-info">
+              <div class="item-name">${item.title}</div>
+              <div class="item-meta">${catLabel(item.category)} · Added ${item.createdAt}</div>
+            </div>
+            <div class="item-actions">
+              <button class="btn-secondary btn-edit"   onclick="editItem('${item.id}')">Edit</button>
+              <button class="btn-secondary"            onclick="reSnippet('${item.id}')">Code</button>
+              <button class="btn-secondary btn-danger" onclick="deleteItem('${item.id}')">✕</button>
+            </div>
           </div>
         </div>
       `).join('');
@@ -541,28 +926,61 @@
 
     function reSnippet(id) {
       const item = getItems().find(i => i.id === id);
-      if (item) { generateSnippet(item); switchTab('portfolio'); }
+      if (item) { switchTab('portfolio'); generateSnippet(item); }
     }
 
-    /* ══ CLEAR ALL ══ */
+    /* ══════════════════════════════
+       CODE SNIPPET GENERATOR
+    ══════════════════════════════ */
+    const CAT_LABELS = { photography:'Photography', design:'Graphic Design', research:'Research', dev:'Development' };
+    function catLabel(cat) { return CAT_LABELS[cat] || cat; }
+
+    function generateSnippet(item) {
+      const snippet =
+`<div class="portfolio-card reveal" data-category="${item.category}" data-img="images/${item.imageName}" data-caption="${item.caption || item.title}" aria-label="View ${item.title}">
+  <div class="portfolio-thumb">
+    <img src="images/${item.imageName}" alt="${item.title}" />
+  </div>
+  <div class="portfolio-info">
+    <div class="portfolio-category">${catLabel(item.category)}</div>
+    <div class="portfolio-title">${item.title}</div>
+  </div>
+</div>`;
+      document.getElementById('snippetOutput').value = snippet;
+      document.getElementById('snippetSection').classList.remove('hidden');
+    }
+
+    function copySnippet() {
+      const ta = document.getElementById('snippetOutput');
+      ta.select();
+      document.execCommand('copy');
+      alert('✅ Snippet copied! Paste it inside the portfolio grid div in your index.html.');
+    }
+
+    /* ══════════════════════════════
+       CLEAR ALL
+    ══════════════════════════════ */
     function clearAll() {
-      if (!confirm('Are you absolutely sure? This will delete ALL admin-added items and links from this browser!')) return;
-      localStorage.removeItem('admin_portfolio_items');
-      localStorage.removeItem('admin_links');
-      renderManage();
-      renderLinks();
+      if (!confirm('Are you absolutely sure? This deletes ALL admin content from this browser!')) return;
+      localStorage.removeItem(KEY_ITEMS);
+      localStorage.removeItem(KEY_LINKS);
+      renderManage(); renderLinks();
       alert('All admin content cleared.');
     }
 
-    /* ══ STORAGE ══ */
-    function getItems()    { return JSON.parse(localStorage.getItem('admin_portfolio_items') || '[]'); }
-    function saveItems(d)  { localStorage.setItem('admin_portfolio_items', JSON.stringify(d)); }
-    function getLinks()    { return JSON.parse(localStorage.getItem('admin_links') || '[]'); }
-    function saveLinks(d)  { localStorage.setItem('admin_links', JSON.stringify(d)); }
+    /* ══════════════════════════════
+       STORAGE
+    ══════════════════════════════ */
+    function getItems()   { return JSON.parse(localStorage.getItem(KEY_ITEMS) || '[]'); }
+    function saveItems(d) { localStorage.setItem(KEY_ITEMS, JSON.stringify(d)); }
+    function getLinks()   { return JSON.parse(localStorage.getItem(KEY_LINKS) || '[]'); }
+    function saveLinks(d) { localStorage.setItem(KEY_LINKS, JSON.stringify(d)); }
 
-    function renderAll()   { renderLinks(); renderManage(); }
+    function renderAll()  { renderLinks(); renderManage(); }
 
-    /* ══ HIDE ALERTS ══ */
+    /* ══════════════════════════════
+       HIDE ALERTS
+    ══════════════════════════════ */
     function hideAlerts(prefix) {
       document.getElementById(prefix + '-success')?.classList.remove('visible');
       document.getElementById(prefix + '-error')?.classList.remove('visible');
